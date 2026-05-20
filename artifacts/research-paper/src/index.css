@@ -1,0 +1,103 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+}
+
+:root {
+  --background: 40 20% 97%;
+  --foreground: 220 20% 10%;
+  --border: 40 20% 85%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 20% 10%;
+  --primary: 162 60% 28%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 40 60% 55%;
+  --secondary-foreground: 220 20% 10%;
+  --muted: 40 15% 93%;
+  --muted-foreground: 220 10% 45%;
+  --accent: 162 40% 92%;
+  --accent-foreground: 162 60% 20%;
+  --app-font-sans: 'Segoe UI', system-ui, sans-serif;
+  --app-font-serif: Georgia, 'Times New Roman', serif;
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground font-sans antialiased; }
+}
+
+/* Islamic geometric pattern background */
+.islamic-pattern {
+  background-color: hsl(162 60% 18%);
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.04) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.04) 0%, transparent 50%);
+  position: relative;
+}
+
+.islamic-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3Cpath d='M30 10 L50 30 L30 50 L10 30Z' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Gold accent line */
+.gold-line {
+  background: linear-gradient(90deg, transparent, hsl(40 80% 55%), transparent);
+}
+
+/* Section number badge */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: hsl(162 60% 28%);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Hadith quote block */
+.hadith-block {
+  border-left: 3px solid hsl(40 80% 55%);
+  background: linear-gradient(135deg, hsl(40 60% 98%), hsl(162 40% 97%));
+}
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Nav link active */
+.nav-link-active {
+  color: hsl(162 60% 28%);
+  border-bottom: 2px solid hsl(40 80% 55%);
+}
+
+/* Print styles */
+@media print {
+  nav, .no-print { display: none !important; }
+  body { background: white; }
+}
